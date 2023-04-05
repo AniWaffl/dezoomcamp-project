@@ -1,3 +1,11 @@
+tmp
+data/
+.vscode
+
+# terraform
+.terraform*
+*.tfstate
+
 # ---> Python
 # Byte-compiled / optimized / DLL files
 __pycache__/

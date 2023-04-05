@@ -1,0 +1,156 @@
+version: '3.4'
+services:
+
+  produser_eu:
+    container_name: produser_eu
+    build:
+      context: .
+      dockerfile: docker/produser/Dockerfile
+
+    restart: always
+
+    environment:
+      - REDIS_HOST=redis
+      - DATACENTER=eu
+      - GENERATOR_SPEED_COEFICIENT=1.1
+
+    env_file:
+      - .env
+
+    command: ["python", "main.py"]
+
+    depends_on:
+      - redis
+
+
+  produser_usa:
+    container_name: produser_usa
+    build:
+      context: .
+      dockerfile: docker/produser/Dockerfile
+
+    restart: always
+
+    environment:
+      - REDIS_HOST=redis
+      - DATACENTER=usa
+      - GENERATOR_SPEED_COEFICIENT=2.5
+
+    env_file:
+      - .env
+
+    command: ["python", "main.py"]
+
+    depends_on:
+      - redis
+
+
+  produser_asia:
+    container_name: produser_asia
+    build:
+      context: .
+      dockerfile: docker/produser/Dockerfile
+
+    restart: always
+
+    environment:
+      - REDIS_HOST=redis
+      - DATACENTER=asia
+      - GENERATOR_SPEED_COEFICIENT=0.8
+
+    env_file:
+      - .env
+
+    command: ["python", "main.py"]
+
+    depends_on:
+      - redis
+
+
+  redis:
+    container_name: redis
+
+    build: 
+      context: .
+      dockerfile: docker/redis/Dockerfile
+
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    
+    restart: always
+
+    depends_on:
+      - clickhouse
+
+
+  clickhouse:
+    container_name: clickhouse
+
+    image: clickhouse/clickhouse-server:latest
+    
+    environment:
+      - CLICKHOUSE_DB=default
+      - CLICKHOUSE_USER=username
+      - CLICKHOUSE_PASSWORD=${CLICKHOUSE_PASS}
+      - CLICKHOUSE_DEFAULT_ACCESS_MANAGEMENT=1
+    
+    volumes:
+      - ./data/clickhouse:/var/lib/clickhouse/
+      - ./data/clickhouse-server:/var/log/clickhouse-server/
+      - ./configs/clickhouse/migrations:/docker-entrypoint-initdb.d/
+
+    ports:
+      - 8123:8123
+    
+    restart: always
+
+  consumer:
+    container_name: consumer
+
+    build:
+      context: .
+      dockerfile: docker/consumer/Dockerfile
+
+    restart: always
+
+    env_file:
+      - .env
+
+    environment:
+      - REDIS_HOST=redis
+      - CLICKHOUSE_USER=username
+      - CLICKHOUSE_PASS=${CLICKHOUSE_PASS}
+      - CLICKHOUSE_DB=destorestatistic
+      - CLICKHOUSE_TABLE=events
+
+    command: ["python", "main.py"]
+
+    depends_on:
+      - redis
+      - clickhouse
+
+
+  grafana:
+    image: grafana/grafana:latest
+
+    container_name: grafana
+
+    ports:
+      - "3000:3000"
+
+    volumes:
+      - grafana-storage:/var/lib/grafana
+
+    environment:
+      - GF_PATHS_DATA=/var/lib/grafana
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASS}
+
+    restart: always
+
+    depends_on:
+      - clickhouse
+
+volumes:
+  grafana-storage:

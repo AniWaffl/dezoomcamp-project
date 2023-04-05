@@ -1,0 +1,734 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_CLICKHOUSE",
+      "label": "ClickHouse",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "grafana-clickhouse-datasource",
+      "pluginName": "ClickHouse"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "9.4.7"
+    },
+    {
+      "type": "datasource",
+      "id": "grafana-clickhouse-datasource",
+      "name": "ClickHouse",
+      "version": "2.2.0"
+    },
+    {
+      "type": "panel",
+      "id": "piechart",
+      "name": "Pie chart",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "timeseries",
+      "name": "Time series",
+      "version": ""
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CLICKHOUSE}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 24,
+            "gradientMode": "scheme",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 6,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 4,
+      "options": {
+        "legend": {
+          "calcs": [
+            "min",
+            "max",
+            "mean"
+          ],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.4.7",
+      "targets": [
+        {
+          "builderOptions": {
+            "0": "T",
+            "1": "h",
+            "2": "e",
+            "3": " ",
+            "4": "q",
+            "5": "u",
+            "6": "e",
+            "7": "r",
+            "8": "y",
+            "9": " ",
+            "10": "i",
+            "11": "s",
+            "12": " ",
+            "13": "n",
+            "14": "o",
+            "15": "t",
+            "16": " ",
+            "17": "a",
+            "18": " ",
+            "19": "s",
+            "20": "e",
+            "21": "l",
+            "22": "e",
+            "23": "c",
+            "24": "t",
+            "25": " ",
+            "26": "s",
+            "27": "t",
+            "28": "a",
+            "29": "t",
+            "30": "e",
+            "31": "m",
+            "32": "e",
+            "33": "n",
+            "34": "t",
+            "35": ".",
+            "fields": [],
+            "filters": [
+              {
+                "condition": "AND",
+                "filterType": "custom",
+                "key": "time",
+                "operator": "WITH IN DASHBOARD TIME RANGE",
+                "restrictToFields": [
+                  {
+                    "label": "time",
+                    "name": "time",
+                    "picklistValues": [],
+                    "type": "DateTime"
+                  }
+                ],
+                "type": "datetime"
+              }
+            ],
+            "limit": 100,
+            "metrics": [],
+            "mode": "trend",
+            "orderBy": [],
+            "table": "events",
+            "timeField": "time",
+            "timeFieldType": "DateTime"
+          },
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CLICKHOUSE}"
+          },
+          "meta": {
+            "builderOptions": {
+              "0": "T",
+              "1": "h",
+              "2": "e",
+              "3": " ",
+              "4": "q",
+              "5": "u",
+              "6": "e",
+              "7": "r",
+              "8": "y",
+              "9": " ",
+              "10": "i",
+              "11": "s",
+              "12": " ",
+              "13": "n",
+              "14": "o",
+              "15": "t",
+              "16": " ",
+              "17": "a",
+              "18": " ",
+              "19": "s",
+              "20": "e",
+              "21": "l",
+              "22": "e",
+              "23": "c",
+              "24": "t",
+              "25": " ",
+              "26": "s",
+              "27": "t",
+              "28": "a",
+              "29": "t",
+              "30": "e",
+              "31": "m",
+              "32": "e",
+              "33": "n",
+              "34": "t",
+              "35": ".",
+              "fields": [],
+              "filters": [
+                {
+                  "condition": "AND",
+                  "filterType": "custom",
+                  "key": "time",
+                  "operator": "WITH IN DASHBOARD TIME RANGE",
+                  "restrictToFields": [
+                    {
+                      "label": "time",
+                      "name": "time",
+                      "picklistValues": [],
+                      "type": "DateTime"
+                    }
+                  ],
+                  "type": "datetime"
+                }
+              ],
+              "limit": 100,
+              "metrics": [],
+              "mode": "trend",
+              "orderBy": [],
+              "table": "events",
+              "timeField": "time",
+              "timeFieldType": "DateTime"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(toStartOfMinute(time)), count(1) as RPM FROM \"events\" WHERE $__timeFilter(toStartOfMinute(time)) AND   ( toStartOfMinute(time)  >= $__fromTime AND toStartOfMinute(time) <= $__toTime ) GROUP BY toStartOfMinute(time), toStartOfMinute(time) ORDER BY toStartOfMinute(time) ASC LIMIT 100",
+          "refId": "A"
+        }
+      ],
+      "title": "General RPM",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CLICKHOUSE}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 24,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 2,
+            "pointSize": 6,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "normal"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 5,
+      "options": {
+        "legend": {
+          "calcs": [
+            "min",
+            "max",
+            "mean"
+          ],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.4.7",
+      "targets": [
+        {
+          "builderOptions": {
+            "0": "T",
+            "1": "h",
+            "2": "e",
+            "3": " ",
+            "4": "q",
+            "5": "u",
+            "6": "e",
+            "7": "r",
+            "8": "y",
+            "9": " ",
+            "10": "i",
+            "11": "s",
+            "12": " ",
+            "13": "n",
+            "14": "o",
+            "15": "t",
+            "16": " ",
+            "17": "a",
+            "18": " ",
+            "19": "s",
+            "20": "e",
+            "21": "l",
+            "22": "e",
+            "23": "c",
+            "24": "t",
+            "25": " ",
+            "26": "s",
+            "27": "t",
+            "28": "a",
+            "29": "t",
+            "30": "e",
+            "31": "m",
+            "32": "e",
+            "33": "n",
+            "34": "t",
+            "35": ".",
+            "fields": [],
+            "filters": [
+              {
+                "condition": "AND",
+                "filterType": "custom",
+                "key": "time",
+                "operator": "WITH IN DASHBOARD TIME RANGE",
+                "restrictToFields": [
+                  {
+                    "label": "time",
+                    "name": "time",
+                    "picklistValues": [],
+                    "type": "DateTime"
+                  }
+                ],
+                "type": "datetime"
+              }
+            ],
+            "limit": 100,
+            "metrics": [],
+            "mode": "trend",
+            "orderBy": [],
+            "table": "events",
+            "timeField": "time",
+            "timeFieldType": "DateTime"
+          },
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CLICKHOUSE}"
+          },
+          "meta": {
+            "builderOptions": {
+              "0": "T",
+              "1": "h",
+              "2": "e",
+              "3": " ",
+              "4": "q",
+              "5": "u",
+              "6": "e",
+              "7": "r",
+              "8": "y",
+              "9": " ",
+              "10": "i",
+              "11": "s",
+              "12": " ",
+              "13": "n",
+              "14": "o",
+              "15": "t",
+              "16": " ",
+              "17": "a",
+              "18": " ",
+              "19": "s",
+              "20": "e",
+              "21": "l",
+              "22": "e",
+              "23": "c",
+              "24": "t",
+              "25": " ",
+              "26": "s",
+              "27": "t",
+              "28": "a",
+              "29": "t",
+              "30": "e",
+              "31": "m",
+              "32": "e",
+              "33": "n",
+              "34": "t",
+              "35": ".",
+              "fields": [],
+              "filters": [
+                {
+                  "condition": "AND",
+                  "filterType": "custom",
+                  "key": "time",
+                  "operator": "WITH IN DASHBOARD TIME RANGE",
+                  "restrictToFields": [
+                    {
+                      "label": "time",
+                      "name": "time",
+                      "picklistValues": [],
+                      "type": "DateTime"
+                    }
+                  ],
+                  "type": "datetime"
+                }
+              ],
+              "limit": 100,
+              "metrics": [],
+              "mode": "trend",
+              "orderBy": [],
+              "table": "events",
+              "timeField": "time",
+              "timeFieldType": "DateTime"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(toStartOfMinute(time)), count(1) as RPM, datacenter FROM \"events\" WHERE $__timeFilter(toStartOfMinute(time)) AND   ( toStartOfMinute(time)  >= $__fromTime AND toStartOfMinute(time) <= $__toTime ) GROUP BY datacenter, toStartOfMinute(time) ORDER BY toStartOfMinute(time) ASC LIMIT 100",
+          "refId": "A"
+        }
+      ],
+      "title": "RPM by datacenter",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CLICKHOUSE}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": [],
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 8
+      },
+      "id": 6,
+      "options": {
+        "displayLabels": [
+          "percent"
+        ],
+        "legend": {
+          "displayMode": "list",
+          "placement": "right",
+          "showLegend": true,
+          "values": []
+        },
+        "pieType": "donut",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.4.7",
+      "targets": [
+        {
+          "builderOptions": {
+            "0": "T",
+            "1": "h",
+            "2": "e",
+            "3": " ",
+            "4": "q",
+            "5": "u",
+            "6": "e",
+            "7": "r",
+            "8": "y",
+            "9": " ",
+            "10": "i",
+            "11": "s",
+            "12": " ",
+            "13": "n",
+            "14": "o",
+            "15": "t",
+            "16": " ",
+            "17": "a",
+            "18": " ",
+            "19": "s",
+            "20": "e",
+            "21": "l",
+            "22": "e",
+            "23": "c",
+            "24": "t",
+            "25": " ",
+            "26": "s",
+            "27": "t",
+            "28": "a",
+            "29": "t",
+            "30": "e",
+            "31": "m",
+            "32": "e",
+            "33": "n",
+            "34": "t",
+            "35": ".",
+            "fields": [],
+            "filters": [
+              {
+                "condition": "AND",
+                "filterType": "custom",
+                "key": "time",
+                "operator": "WITH IN DASHBOARD TIME RANGE",
+                "restrictToFields": [
+                  {
+                    "label": "time",
+                    "name": "time",
+                    "picklistValues": [],
+                    "type": "DateTime"
+                  }
+                ],
+                "type": "datetime"
+              }
+            ],
+            "limit": 100,
+            "metrics": [],
+            "mode": "trend",
+            "orderBy": [],
+            "table": "events",
+            "timeField": "time",
+            "timeFieldType": "DateTime"
+          },
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CLICKHOUSE}"
+          },
+          "format": 1,
+          "meta": {
+            "builderOptions": {
+              "0": "T",
+              "1": "h",
+              "2": "e",
+              "3": " ",
+              "4": "q",
+              "5": "u",
+              "6": "e",
+              "7": "r",
+              "8": "y",
+              "9": " ",
+              "10": "i",
+              "11": "s",
+              "12": " ",
+              "13": "n",
+              "14": "o",
+              "15": "t",
+              "16": " ",
+              "17": "a",
+              "18": " ",
+              "19": "s",
+              "20": "e",
+              "21": "l",
+              "22": "e",
+              "23": "c",
+              "24": "t",
+              "25": " ",
+              "26": "s",
+              "27": "t",
+              "28": "a",
+              "29": "t",
+              "30": "e",
+              "31": "m",
+              "32": "e",
+              "33": "n",
+              "34": "t",
+              "35": ".",
+              "fields": [],
+              "filters": [
+                {
+                  "condition": "AND",
+                  "filterType": "custom",
+                  "key": "time",
+                  "operator": "WITH IN DASHBOARD TIME RANGE",
+                  "restrictToFields": [
+                    {
+                      "label": "time",
+                      "name": "time",
+                      "picklistValues": [],
+                      "type": "DateTime"
+                    }
+                  ],
+                  "type": "datetime"
+                }
+              ],
+              "limit": 100,
+              "metrics": [],
+              "mode": "trend",
+              "orderBy": [],
+              "table": "events",
+              "timeField": "time",
+              "timeFieldType": "DateTime"
+            }
+          },
+          "queryType": "sql",
+          "rawSql": "SELECT $__timeInterval(toStartOfMinute(time)), \n\nsum(type = 'view') / sum(1) as view,\nsum(type = 'cart') / sum(1) as cart,\nsum(type = 'purchase') / sum(1) as purchase\n\nFROM \"events\" WHERE $__timeFilter(toStartOfMinute(time)) AND   ( toStartOfMinute(time)  >= $__fromTime AND toStartOfMinute(time) <= $__toTime ) GROUP BY toStartOfMinute(time), toStartOfMinute(time) ORDER BY toStartOfMinute(time) ASC LIMIT 100",
+          "refId": "A",
+          "selectedFormat": 4
+        }
+      ],
+      "title": "User Сonversions",
+      "type": "piechart"
+    }
+  ],
+  "refresh": "10s",
+  "revision": 1,
+  "schemaVersion": 38,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "New dashboard",
+  "uid": "sTLzqvYVk",
+  "version": 13,
+  "weekStart": ""
+}

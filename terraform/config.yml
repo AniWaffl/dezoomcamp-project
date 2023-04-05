@@ -1,0 +1,33 @@
+#cloud-config
+users:
+  - name: dafault
+    groups: user, admin
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    lock_passwd: false
+    passwd: ch@ngeme!
+
+package_update: true
+package_upgrade: true
+packages:
+  - ufw
+runcmd:
+  - ufw allow 'OpenSSH'
+  - ufw enable
+  - sed -ie '/^PermitRootLogin/s/^.*$/PermitRootLogin no/' /etc/ssh/sshd_config
+  - sed -ie '/^PasswordAuthentication/s/^.*$/PasswordAuthentication no/' /etc/ssh/sshd_config
+  - sed -ie '/^X11Forwarding/s/^.*$/X11Forwarding no/' /etc/ssh/sshd_config
+  - sed -ie '/^#MaxAuthTries/s/^.*$/MaxAuthTries 2/' /etc/ssh/sshd_config
+  - sed -ie '/^#AllowTcpForwarding/s/^.*$/AllowTcpForwarding no/' /etc/ssh/sshd_config
+  - sed -ie '/^#AllowAgentForwarding/s/^.*$/AllowAgentForwarding no/' /etc/ssh/sshd_config
+  - sed -ie '/^#AuthorizedKeysFile/s/^.*$/AuthorizedKeysFile .ssh/authorized_keys/' /etc/ssh/sshd_config
+  - sed -i '$a AllowUsers devops' /etc/ssh/sshd_config
+  - systemctl restart ssh
+  - curl -fsSL https://get.docker.com | sh
+  - systemctl start docker
+  - systemctl enable docker
+  - curl -L "https://github.com/docker/compose/releases/download/2.17.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+  - chmod +x /usr/local/bin/docker-compose
+  - git clone git@github.com:AniWaffl/dezoomcamp-project.git
+  - cat DE-marketplace-analytics
+  - docker-compose up -d
