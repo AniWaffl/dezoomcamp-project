@@ -70,4 +70,43 @@ Dashboard: http://65.21.55.49:3000/d/sTLzqvYVk/zoomcamp
 
 # Reproductivity
 
+## Prerequisites
+
+Terraform CLI installed on your local machine
+Account in Hetzner Cloud + Api Token
+
+## Step 1: Create the project
+
+1. Clone this reposytory and navigate into it.
+2. Confirure a docker-compose.yml file to define your application's services.
+3. Edit a .env file to store environment variables needed for the Docker Compose configuration.
+
+## Step 2: Deploy the project using Terraform
+
+1. Navigate into the terraform directory
+2. Run terraform init to initialize the working directory.
+3. Run terraform plan to see what changes will be made to the infrastructure.
+4. If everything looks good, run terraform apply to deploy the project.
+
+## Step 3: Configure the server
+
+1. SSH into the server.
+2. Navigate to the directory where your docker-compose.yml file is located.
+3. Edit the .env file to include any necessary environment variables for your application.
+4. Run docker-compose up -d to start the application in detached mode.
+
+## Step 4: Export Grafana configuration
+
+1. Access the Grafana web interface and log in.
+2. Click the gear icon in the top-left corner and select "Dashboard settings".
+3. Click the "JSON model" tab.
+4. Use the Grafana UI to import the JSON configuration from ./dashboard_config
+
+That's it! You should now have your project up and running on the server, with Grafana dashboards displaying your application's metrics.
+
 # Further Improvements:
+- Simplify deployment with a script that executes all necessary Terraform commands.
+- Manage configuration with environment variables for flexibility and security.
+- Add more metrics and graphs to gain deeper insights into application and infrastructure performance.
+- Add a DWH cluster and set up replication for scalability and reliability.
+- Use Jenkins and configuration files to automate daily report creation and store them in a data lake for improved customer engagement and business decision-making.
